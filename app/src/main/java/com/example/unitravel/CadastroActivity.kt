@@ -7,16 +7,19 @@ import android.widget.TextView
 import android.widget.EditText
 import android.widget.Toast
 import android.content.Intent
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.FirebaseFirestore
 
 class CadastroActivity : AppCompatActivity() {
-    // Declaração das variáveis para os componentes da interface
+
     private lateinit var editTextEmail: EditText
     private lateinit var editTextUsuario: EditText
     private lateinit var editTextSenha: EditText
     private lateinit var botaoCadastro: Button
     private lateinit var textViewContaExistente: TextView
 
-
+    private lateinit var auth: FirebaseAuth
+    private lateinit var db: FirebaseFirestore
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -29,29 +32,55 @@ class CadastroActivity : AppCompatActivity() {
         botaoCadastro = findViewById(R.id.buttonCadastro)
         textViewContaExistente = findViewById(R.id.contaExistente)
 
+        // Inicializa o Firebase Authentication e Firestore
+        auth = FirebaseAuth.getInstance()
+        db = FirebaseFirestore.getInstance()
+
         // Aperta botão de cadastrar
         botaoCadastro.setOnClickListener {
 
-            // Obtém o texto dos campos de entrada
+            val email = editTextEmail.text.toString()
             val usuario = editTextUsuario.text.toString()
             val senha = editTextSenha.text.toString()
 
-            // Verifica se os campos estão vazios
-            if(usuario.isEmpty() || senha.isEmpty() || usuario.isEmpty()) {
+            if (email.isEmpty() || usuario.isEmpty() || senha.isEmpty()) {
                 Toast.makeText(this, "Por favor, preencha todos os campos.", Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
-            }else{
-                Toast.makeText(this, "Cadastro feito com sucesso", Toast.LENGTH_SHORT).show()
-                val intent = Intent(this,EscolhaUsuarioActivity::class.java)
-                startActivity(intent) // Inicia a atividade de Login
             }
+
+            // Registra o usuário no Firebase Authentication
+            auth.createUserWithEmailAndPassword(email, senha)
+                .addOnCompleteListener { task ->
+                    if (task.isSuccessful) {
+                        // Se o cadastro for bem-sucedido, salva no Firestore
+                        val user = auth.currentUser
+                        val userData = hashMapOf(
+                            "email" to email,
+                            "usuario" to usuario,
+                            "senha" to senha
+                        )
+
+                        db.collection("usuarios")
+                            .document(user?.uid ?: "")  // Usa o UID do Firebase Auth
+                            .set(userData)
+                            .addOnSuccessListener {
+                                Toast.makeText(this, "Cadastro feito com sucesso", Toast.LENGTH_SHORT).show()
+                                val intent = Intent(this, MainActivity::class.java)
+                                startActivity(intent)
+                            }
+                            .addOnFailureListener { e ->
+                                Toast.makeText(this, "Erro ao salvar dados no Firestore: ${e.message}", Toast.LENGTH_SHORT).show()
+                            }
+                    } else {
+                        Toast.makeText(this, "Erro no cadastro: ${task.exception?.message}", Toast.LENGTH_SHORT).show()
+                    }
+                }
         }
 
         // Aperta o botão para voltar ao login
         textViewContaExistente.setOnClickListener {
-            // Cria uma nova intenção para a atividade de cadastro
-            val intent = Intent(this, MainActivity::class.java) // Cria a intenção
-            startActivity(intent) // Inicia a atividade de Login
+            val intent = Intent(this, MainActivity::class.java)
+            startActivity(intent)
         }
     }
 }
