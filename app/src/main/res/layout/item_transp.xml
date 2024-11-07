@@ -1,0 +1,67 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:padding="8dp"
+    android:background="@drawable/rounded_corner"
+    android:layout_marginBottom="8dp"
+    android:elevation="4dp">
+
+    <ImageView
+        android:id="@+id/transpImage"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:src="@drawable/sushi"
+        android:scaleType="centerCrop"
+        android:layout_gravity="center_vertical"
+        android:layout_marginEnd="8dp" />
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/transpName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Transporte Name"
+            android:textColor="#000000"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/transpCost"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Preço: R$ X"
+            android:textColor="#555555"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/transpInfo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Endereço: Rua Exemplo, 123"
+            android:textColor="#555555"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/transpPhone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Telefone: (47) 3366-1851"
+            android:textColor="#555555"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/transpHours"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Horário de Funcionamento: 11:00 - 14:00 e 18:00 - 00:00"
+            android:textColor="#555555"
+            android:textSize="14sp" />
+    </LinearLayout>
+
+</LinearLayout>

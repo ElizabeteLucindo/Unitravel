@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="tipo_de_cozinha">
+        <item>Tipo de cozinha</item>
+        <item>Japonesa</item>
+        <item>Churrasco</item>
+        <item>Pizzaria</item>
+    </string-array>
+
+    <string-array name="preco">
+        <item>Preço</item>
+        <item>$</item>
+        <item>$$</item>
+        <item>$$$</item>
+    </string-array>
+
+    <string-array name="avaliacao">
+        <item>Avaliação</item>
+        <item>★</item>
+        <item>★★</item>
+        <item>★★★</item>
+        <item>★★★★</item>
+        <item>★★★★★</item>
+    </string-array>
+
+    <string-array name="distancia">
+        <item>Distância</item>
+        <item>Próximo</item>
+        <item>Moderado</item>
+        <item>Longe</item>
+    </string-array>
+
+    <string-array name="estado">
+        <item>Santa Catarina</item>
+    </string-array>
+
+    <string-array name="cidade">
+        <item>Itajaí</item>
+        <item>Balneário Camboriú</item>
+        <item>Camboriú</item>
+    </string-array>
+
+</resources>

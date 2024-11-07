@@ -1,0 +1,76 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/blue">
+
+    <!-- Barra superior com título e ícone -->
+    <LinearLayout
+        android:id="@+id/top_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:background="@color/azul2"
+        android:padding="8dp">
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btnMenu"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:background="@drawable/baseline_dehaze_24"
+            />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Itajaí-SC-Brasil"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            android:gravity="center" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:background="@drawable/baseline_account_circle_24"/>
+
+    </LinearLayout>
+
+    <!-- Ícone e título para a seção de alimentação -->
+    <LinearLayout
+        android:id="@+id/labelTransporte"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_below="@+id/top_bar"
+        android:layout_marginTop="40dp"
+        android:layout_marginStart="50dp">
+
+        <ImageView
+            android:layout_width="55dp"
+            android:layout_height="55dp"
+            android:src="@drawable/baseline_directions_bus_24"
+            android:background="@drawable/circle_background"
+            android:padding="10dp"
+            android:layout_marginBottom="30dp"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Transporte"
+            android:textColor="@color/black"
+            android:textSize="25sp"
+            android:layout_marginStart="35dp"
+            android:layout_marginTop="12dp"/>
+    </LinearLayout>
+
+
+    <!-- RecyclerView para lista de restaurantes -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerViewTransportes"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/labelTransporte"
+        android:layout_margin="8dp" />
+
+</RelativeLayout>

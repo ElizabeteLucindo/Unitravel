@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/blue"
+    tools:context=".EscolhaUsuarioActivity">
+
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="wrap_content"
+        android:layout_height="229dp"
+        android:background="@color/marrom"
+        app:srcCompat="@drawable/imagem_escolha" />
+
+    <TextView
+        android:id="@+id/categoria"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:background="@color/azul2"
+        android:text="Categoria"
+        android:textColor="@color/black"
+        android:textSize="28sp"
+        android:paddingStart="16dp"
+        android:drawableEnd="@drawable/baseline_arrow_forward_24"
+        android:paddingEnd="240dp"
+        app:layout_constraintTop_toBottomOf="@+id/imageView"
+        />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btnMudarLocal"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:text="Mudar Local escolhido"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        android:padding="16dp"
+        android:drawableStart="@drawable/baseline_location_on_24"
+        android:drawablePadding="8dp"
+        android:background="@drawable/button_background"
+        android:gravity="center_vertical" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btnHoteis"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:text="Hotéis"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        android:padding="16dp"
+        android:drawableStart="@drawable/baseline_hotel_24"
+        android:drawablePadding="8dp"
+        android:background="@drawable/button_background"
+        android:gravity="center_vertical" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btnAlimentacao"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:text="Alimentação"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        android:padding="16dp"
+        android:drawableStart="@drawable/baseline_restaurant_24"
+        android:drawablePadding="8dp"
+        android:background="@drawable/button_background"
+        android:gravity="center_vertical" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btnAtividades"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:text="Atividades"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        android:padding="16dp"
+        android:drawableStart="@drawable/baseline_directions_walk_24"
+        android:drawablePadding="8dp"
+        android:background="@drawable/button_background"
+        android:gravity="center_vertical" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btnTransporte"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:text="Transporte"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        android:padding="16dp"
+        android:drawableStart="@drawable/baseline_directions_bus_24"
+        android:drawablePadding="8dp"
+        android:background="@drawable/button_background"
+        android:gravity="center_vertical" />
+
+</LinearLayout>
+
