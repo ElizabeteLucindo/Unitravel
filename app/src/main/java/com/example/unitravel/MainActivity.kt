@@ -12,12 +12,14 @@ import androidx.appcompat.app.AppCompatActivity
 
 class MainActivity : AppCompatActivity() {
 
+    // Declaração das variáveis para os componentes da interface
     private lateinit var editTextUsuario: EditText
     private lateinit var editTextSenha: EditText
     private lateinit var botaoLogin: Button
     private lateinit var textViewEqueceuSenha: TextView
     private lateinit var textViewCadastrar: TextView
 
+    // Instância do FirebaseAuth para autenticação
     private lateinit var auth: FirebaseAuth
 
     override fun onCreate(savedInstanceState: Bundle?) {

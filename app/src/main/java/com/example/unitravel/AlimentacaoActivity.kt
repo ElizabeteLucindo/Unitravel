@@ -4,12 +4,21 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import androidx.drawerlayout.widget.DrawerLayout
+import android.widget.ImageView
 
 
 class AlimentacaoActivity : AppCompatActivity() {
+    private lateinit var drawerLayout: DrawerLayout
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_alimentacao)
+
+        // Configura o DrawerLayout
+        drawerLayout = findViewById(R.id.drawer_layout_alimentacao)
+        val menuIcon: ImageView = findViewById(R.id.btnMenu)
+        setupDrawer(drawerLayout, menuIcon)
 
         val recyclerView: RecyclerView = findViewById(R.id.recyclerViewRestaurants)
 

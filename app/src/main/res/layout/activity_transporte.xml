@@ -1,76 +1,105 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.drawerlayout.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/drawer_layout_transporte"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/blue">
 
-    <!-- Barra superior com título e ícone -->
-    <LinearLayout
-        android:id="@+id/top_bar"
+
+    <!-- Conteúdo Principal -->
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:background="@color/azul2"
-        android:padding="8dp">
-
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/btnMenu"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:background="@drawable/baseline_dehaze_24"
-            />
-
-        <TextView
-            android:layout_width="0dp"
+        android:layout_height="match_parent"
+        >
+        <!-- Barra superior com título e ícone -->
+        <LinearLayout
+            android:id="@+id/top_bar"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Itajaí-SC-Brasil"
-            android:textColor="@color/black"
-            android:textSize="20sp"
-            android:gravity="center" />
+            android:orientation="horizontal"
+            android:background="@color/azul2"
+            android:padding="8dp">
 
-        <androidx.appcompat.widget.AppCompatButton
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:background="@drawable/baseline_account_circle_24"/>
+            <ImageView
+                android:id="@+id/btnMenu"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:background="@drawable/baseline_dehaze_24"
+                />
 
-    </LinearLayout>
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Itajaí-SC-Brasil"
+                android:textColor="@color/black"
+                android:textSize="20sp"
+                android:gravity="center" />
 
-    <!-- Ícone e título para a seção de alimentação -->
+            <androidx.appcompat.widget.AppCompatButton
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:background="@drawable/baseline_account_circle_24"/>
+
+        </LinearLayout>
+
+        <!-- Ícone e título para a seção de transporte -->
+        <LinearLayout
+            android:id="@+id/labelTransporte"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_below="@+id/top_bar"
+            android:layout_marginTop="40dp"
+            android:layout_marginStart="50dp">
+
+            <ImageView
+                android:layout_width="55dp"
+                android:layout_height="55dp"
+                android:src="@drawable/baseline_directions_bus_24"
+                android:background="@drawable/circle_background"
+                android:padding="10dp"
+                android:layout_marginBottom="30dp"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Transporte"
+                android:textColor="@color/black"
+                android:textSize="25sp"
+                android:layout_marginStart="35dp"
+                android:layout_marginTop="12dp"/>
+        </LinearLayout>
+
+
+        <!-- RecyclerView para lista de restaurantes -->
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerViewTransportes"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/labelTransporte"
+            android:layout_margin="8dp" />
+    </RelativeLayout>
+
+    <!-- Menu Lateral -->
     <LinearLayout
-        android:id="@+id/labelTransporte"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_below="@+id/top_bar"
-        android:layout_marginTop="40dp"
-        android:layout_marginStart="50dp">
+        android:layout_width="300dp"
+        android:layout_height="match_parent"
+        android:layout_gravity="start"
+        android:orientation="vertical"
+        android:background="@color/azul2"
+        android:padding="16dp">
 
-        <ImageView
-            android:layout_width="55dp"
-            android:layout_height="55dp"
-            android:src="@drawable/baseline_directions_bus_24"
-            android:background="@drawable/circle_background"
-            android:padding="10dp"
-            android:layout_marginBottom="30dp"
-            />
-
+        <!-- Conteúdo do menu-->
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Transporte"
-            android:textColor="@color/black"
-            android:textSize="25sp"
-            android:layout_marginStart="35dp"
-            android:layout_marginTop="12dp"/>
+            android:text="Opção 1" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Opção 2" />
+
     </LinearLayout>
 
-
-    <!-- RecyclerView para lista de restaurantes -->
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerViewTransportes"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/labelTransporte"
-        android:layout_margin="8dp" />
-
-</RelativeLayout>
+</androidx.drawerlayout.widget.DrawerLayout>
