@@ -141,13 +141,20 @@
 
         <!-- Conteúdo do menu-->
         <TextView
+            android:id="@+id/menu_option1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Opção 1" />
         <TextView
+            android:id="@+id/menu_cadastrar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Opção 2" />
+            android:text="Cadastrar" />
+        <TextView
+            android:id="@+id/sair"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Sair" />
 
     </LinearLayout>
 

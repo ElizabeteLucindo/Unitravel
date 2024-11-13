@@ -6,6 +6,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.drawerlayout.widget.DrawerLayout
 import android.widget.ImageView
+import setupDrawer
 
 
 class AtividadesActivity : AppCompatActivity() {
@@ -19,7 +20,7 @@ class AtividadesActivity : AppCompatActivity() {
         // Configura o DrawerLayout
         drawerLayout = findViewById(R.id.drawer_layout)
         val menuIcon: ImageView = findViewById(R.id.btnMenu)
-        setupDrawer(drawerLayout, menuIcon)
+        setupDrawer(drawerLayout, menuIcon, this)
 
         val recyclerView: RecyclerView = findViewById(R.id.recyclerView)
 

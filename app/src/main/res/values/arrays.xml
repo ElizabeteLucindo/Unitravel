@@ -40,4 +40,11 @@
         <item>Camboriú</item>
     </string-array>
 
+    <string-array name="categoria">
+        <item>Hotéis</item>
+        <item>Alimentação</item>
+        <item>Atividades</item>
+        <item>Transporte</item>
+    </string-array>
+
 </resources>
