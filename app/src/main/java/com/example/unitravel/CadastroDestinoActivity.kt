@@ -20,10 +20,12 @@ class CadastroDestinoActivity : AppCompatActivity() {
     private lateinit var horario: EditText
     private lateinit var custo: EditText
     private lateinit var contato: EditText
+    private lateinit var servicos: EditText
     private lateinit var tipoCozinha: Spinner
     private lateinit var avaliacao: Spinner
     private lateinit var label_tipoCozinha: TextView
     private lateinit var label_avaliacao: TextView
+    private lateinit var label_servicos: TextView
     private lateinit var btnCadastro: Button
 
 
@@ -43,45 +45,67 @@ class CadastroDestinoActivity : AppCompatActivity() {
         contato = findViewById(R.id.contato)
         tipoCozinha = findViewById(R.id.tipoCozinha)
         avaliacao = findViewById(R.id.avaliacao)
+        servicos = findViewById(R.id.servicos)
         label_tipoCozinha = findViewById(R.id.labelTipoCozinha)
         label_avaliacao = findViewById(R.id.labelAvaliacao)
+        label_servicos = findViewById(R.id.labelServicos)
         btnCadastro = findViewById(R.id.buttonCadastro)
 
 
-        // Campos adicionais
+        // Campos adicionais Alimentação
         tipoCozinha.visibility = View.GONE
         avaliacao.visibility = View.GONE
         label_tipoCozinha.visibility = View.GONE
         label_avaliacao.visibility = View.GONE
 
+        // Campos adicionais Hoteis
+        servicos.visibility = View.GONE
+        label_servicos.visibility = View.GONE
+
         // Configuração do Spinner para selecionar a categoria
         categoria.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(parentView: AdapterView<*>, view: View?, position: Int, id: Long) {
-                // Exibe os campos extras quando "Alimentação" for selecionada
-                if (categoria.selectedItem.toString() == "Alimentação") {
-                    tipoCozinha.visibility = View.VISIBLE
-                    avaliacao.visibility = View.VISIBLE
-                    label_tipoCozinha.visibility = View.VISIBLE
-                    label_avaliacao.visibility = View.VISIBLE
-                } else {
-                    tipoCozinha.visibility = View.GONE
-                    avaliacao.visibility = View.GONE
-                    label_tipoCozinha.visibility = View.GONE
-                    label_avaliacao.visibility = View.GONE
-                }
+                val categoriaSelecionada = categoria.selectedItem.toString()
+                atualizarCamposVisibilidade(categoriaSelecionada)
+
             }
 
             override fun onNothingSelected(parentView: AdapterView<*>) {
-                tipoCozinha.visibility = View.GONE
-                avaliacao.visibility = View.GONE
-                label_tipoCozinha.visibility = View.GONE
-                label_avaliacao.visibility = View.GONE
+                atualizarCamposVisibilidade("")
             }
         }
 
         // Configura o botão para salvar o destino no Firestore
         btnCadastro.setOnClickListener {
             cadastrarDestino()
+        }
+    }
+
+    private fun atualizarCamposVisibilidade(categoria: String){
+        // Exibe os campos extras quando "Alimentação" for selecionada
+        if (categoria == "Alimentação") {
+            tipoCozinha.visibility = View.VISIBLE
+            avaliacao.visibility = View.VISIBLE
+            label_tipoCozinha.visibility = View.VISIBLE
+            label_avaliacao.visibility = View.VISIBLE
+            servicos.visibility = View.GONE
+            label_servicos.visibility = View.GONE
+        }
+        // Exibe os campos extras quando "Hotéis" for selecionada
+        else if (categoria == "Hotéis"){
+            servicos.visibility = View.VISIBLE
+            label_servicos.visibility = View.VISIBLE
+            avaliacao.visibility = View.VISIBLE
+            label_avaliacao.visibility = View.VISIBLE
+            tipoCozinha.visibility = View.GONE
+            label_tipoCozinha.visibility = View.GONE
+        } else{
+            tipoCozinha.visibility = View.GONE
+            avaliacao.visibility = View.GONE
+            servicos.visibility = View.GONE
+            label_tipoCozinha.visibility = View.GONE
+            label_avaliacao.visibility = View.GONE
+            label_servicos.visibility = View.GONE
         }
     }
 
@@ -95,6 +119,7 @@ class CadastroDestinoActivity : AppCompatActivity() {
         val contatoText = contato.text.toString()
         val tipoCozinhaText = tipoCozinha.selectedItem.toString()
         val avaliacaoText = avaliacao.selectedItem.toString()
+        val servicoText = servicos.text.toString()
 
         // Verifica se todos os campos foram preenchidos
         if (nome.isEmpty() || localizacaoText.isEmpty() || horarioText.isEmpty() || custoText.isEmpty() || contatoText.isEmpty()) {
@@ -103,7 +128,7 @@ class CadastroDestinoActivity : AppCompatActivity() {
         }
 
         if  (categoriaSelecionada == "Alimentação" && tipoCozinhaText == "Tipo de cozinha") {
-            Toast.makeText(this, "Por favor, preencha todos os campos", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, "Por favor, selecione o tipo de cozinha", Toast.LENGTH_SHORT).show()
             return
         }
 
@@ -120,6 +145,12 @@ class CadastroDestinoActivity : AppCompatActivity() {
         // Adiciona os campos adicionais caso a categoria seja "Alimentação"
         if (categoriaSelecionada == "Alimentação") {
             destino["tipoCozinha"] = tipoCozinhaText
+            destino["avaliacao"] = avaliacaoText
+        }
+
+        // Adiciona os campos adicionais caso a categoria seja "Hotéis"
+        if (categoriaSelecionada == "Hotéis") {
+            destino["servicos"] = servicoText
             destino["avaliacao"] = avaliacaoText
         }
 
@@ -140,6 +171,7 @@ class CadastroDestinoActivity : AppCompatActivity() {
         localizacao.text.clear()
         horario.text.clear()
         custo.text.clear()
+        servicos.text.clear()
         contato.text.clear()
         tipoCozinha.setSelection(0)
         avaliacao.setSelection(0)
