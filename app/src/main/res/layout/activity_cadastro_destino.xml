@@ -1,12 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/blue"
     tools:context=".CadastroDestinoActivity">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
     <TextView
         android:id="@+id/cadastroDestino"
@@ -21,28 +25,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
-    <TextView
-        android:id="@+id/labelNomeDestino"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
-        android:text="Nome do destino"
-        android:textColor="@color/black"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.292"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/cadastroDestino" />
 
-    <EditText
-        android:id="@+id/nomeDestino"
-        android:layout_width="234dp"
-        android:layout_height="38dp"
-        android:layout_marginTop="4dp"
-        android:background="@drawable/edittext_white_square"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/labelNomeDestino" />
 
     <TextView
         android:id="@+id/labelCategoria"
@@ -55,7 +38,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.255"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/nomeDestino" />
+        app:layout_constraintTop_toBottomOf="@id/cadastroDestino" />
 
     <Spinner
         android:id="@+id/Categoria"
@@ -69,6 +52,31 @@
         app:layout_constraintTop_toBottomOf="@id/labelCategoria" />
 
     <TextView
+        android:id="@+id/labelNomeDestino"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="25dp"
+        android:text="Nome do destino"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.292"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/Categoria" />
+
+    <EditText
+        android:id="@+id/nomeDestino"
+        android:layout_width="234dp"
+        android:layout_height="38dp"
+        android:layout_marginTop="4dp"
+        android:background="@drawable/edittext_white_square"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/labelNomeDestino" />
+
+
+
+    <TextView
         android:id="@+id/labelLocalizacao"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -79,7 +87,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.255"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/Categoria" />
+        app:layout_constraintTop_toBottomOf="@id/nomeDestino" />
 
     <EditText
         android:id="@+id/Localizacao"
@@ -160,35 +168,86 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/labelContato" />
 
-    <TextView
-        android:id="@+id/labelFotos"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="28dp"
-        android:text="Fotos"
-        android:textColor="@color/black"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.237"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/contato" />
 
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/btnSelectImage"
-        android:layout_width="150dp"
-        android:layout_height="20dp"
+        <TextView
+            android:id="@+id/labelTipoCozinha"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="Tipo de Cozinha"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.3"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/contato" />
+
+        <Spinner
+        android:id="@+id/tipoCozinha"
+        android:entries="@array/tipo_de_cozinha"
+        android:layout_width="234dp"
+        android:layout_height="38dp"
         android:layout_marginTop="4dp"
         android:background="@drawable/edittext_white_square"
-        android:padding="0dp"
-        android:text="Escolher arquivo"
-        android:textColor="@color/black"
-        android:textSize="10sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.344"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/labelFotos" />
+        app:layout_constraintTop_toBottomOf="@id/labelTipoCozinha" />
 
-    <Button
+
+        <TextView
+            android:id="@+id/labelAvaliacao"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="28dp"
+            android:text="Avaliação"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.271"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tipoCozinha" />
+
+        <Spinner
+            android:id="@+id/avaliacao"
+            android:entries="@array/avaliacao"
+            android:layout_width="234dp"
+            android:layout_height="38dp"
+            android:layout_marginTop="4dp"
+            android:background="@drawable/edittext_white_square"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.509"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/labelAvaliacao" />
+
+        <TextView
+            android:id="@+id/labelFotos"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="Fotos"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.258"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/avaliacao" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btnSelectImage"
+            android:layout_width="150dp"
+            android:layout_height="20dp"
+            android:layout_marginTop="4dp"
+            android:background="@drawable/edittext_white_square"
+            android:padding="0dp"
+            android:text="Escolher arquivo"
+            android:textColor="@color/black"
+            android:textSize="10sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.361"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/labelFotos" />
+
+        <Button
         android:id="@+id/buttonCadastro"
         android:layout_width="231dp"
         android:layout_height="48dp"
@@ -204,4 +263,5 @@
         app:layout_constraintTop_toBottomOf="@id/btnSelectImage" />
 
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

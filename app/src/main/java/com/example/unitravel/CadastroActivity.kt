@@ -10,6 +10,7 @@ import android.content.Intent
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 
+
 class CadastroActivity : AppCompatActivity() {
 
     private lateinit var editTextEmail: EditText

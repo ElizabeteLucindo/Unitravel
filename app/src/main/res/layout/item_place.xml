@@ -1,20 +1,20 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="horizontal"
-    android:padding="8dp"
-    android:background="@drawable/rounded_corner"
     android:layout_marginBottom="8dp"
-    android:elevation="4dp">
+    android:background="@drawable/rounded_corner"
+    android:elevation="4dp"
+    android:orientation="horizontal"
+    android:padding="8dp">
 
     <ImageView
         android:id="@+id/placeImage"
         android:layout_width="80dp"
         android:layout_height="80dp"
-        android:src="@drawable/bico_do_papagaio"
-        android:scaleType="centerCrop"
         android:layout_gravity="center_vertical"
-        android:layout_marginEnd="8dp" />
+        android:layout_marginEnd="8dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/bico_do_papagaio" />
 
     <LinearLayout
         android:layout_width="0dp"
@@ -48,12 +48,13 @@
             android:textSize="14sp" />
 
         <TextView
-            android:id="@+id/placeTopics"
+            android:id="@+id/placeHours"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Tópicos: Fotos, família, passeio"
+            android:text="Horario de funcionamento: 24hrs"
             android:textColor="#555555"
             android:textSize="14sp" />
+
     </LinearLayout>
 
 </LinearLayout>

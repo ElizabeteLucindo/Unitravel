@@ -7,16 +7,14 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 
-class RestaurantAdapter(private val restaurants: List<Restaurant>) :
+class RestaurantAdapter(private var restaurants: MutableList<Restaurant>) :
     RecyclerView.Adapter<RestaurantAdapter.RestaurantViewHolder>() {
 
     inner class RestaurantViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val name: TextView = itemView.findViewById(R.id.restaurantName)
         val address: TextView = itemView.findViewById(R.id.restaurantAddress)
         val type: TextView = itemView.findViewById(R.id.restaurantType)
-        val phone: TextView = itemView.findViewById(R.id.restaurantPhone)
         val hours: TextView = itemView.findViewById(R.id.restaurantHours)
-        val image: ImageView = itemView.findViewById(R.id.restaurantImage)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RestaurantViewHolder {
@@ -28,12 +26,19 @@ class RestaurantAdapter(private val restaurants: List<Restaurant>) :
     override fun onBindViewHolder(holder: RestaurantViewHolder, position: Int) {
         val restaurant = restaurants[position]
         holder.name.text = restaurant.name
-        holder.address.text = restaurant.address
-        holder.type.text = restaurant.type
-        holder.phone.text = restaurant.phone
-        holder.hours.text = restaurant.hours
-        holder.image.setImageResource(restaurant.imageResource)
+        holder.address.text = "Endereço: ${restaurant.address}"
+        holder.type.text = "Tipo de cozinha: ${restaurant.type}"
+        holder.hours.text = "Horário de funcionamento: ${restaurant.hours}"
     }
 
-    override fun getItemCount() = restaurants.size
+    override fun getItemCount(): Int {
+        return restaurants.size
+    }
+
+    fun setRestaurant(newRestaurants: List<Restaurant>) {
+        this.restaurants.clear()
+        this.restaurants.addAll(newRestaurants)
+        notifyDataSetChanged()
+    }
+
 }

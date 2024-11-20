@@ -5,6 +5,11 @@
         <item>Japonesa</item>
         <item>Churrasco</item>
         <item>Pizzaria</item>
+        <item>Frutos do Mar</item>
+        <item>Vegetariana</item>
+        <item>Mexicana</item>
+        <item>Árabe</item>
+        <item>Outros</item>
     </string-array>
 
     <string-array name="preco">

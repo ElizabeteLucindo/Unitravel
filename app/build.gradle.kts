@@ -43,6 +43,7 @@ dependencies {
     implementation("com.google.firebase:firebase-firestore")
     implementation("com.google.firebase:firebase-auth")  // Para autenticação de usuários com e-mail e senha
 
+
     // Dependências do Android
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)

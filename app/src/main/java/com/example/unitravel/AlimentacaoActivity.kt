@@ -7,50 +7,61 @@ import androidx.recyclerview.widget.RecyclerView
 import androidx.drawerlayout.widget.DrawerLayout
 import android.widget.ImageView
 import setupDrawer
+import android.widget.Toast
+import com.google.firebase.firestore.FirebaseFirestore
 
 class AlimentacaoActivity : AppCompatActivity() {
+
     private lateinit var drawerLayout: DrawerLayout
+    private lateinit var adapter: RestaurantAdapter
+    private lateinit var recyclerView: RecyclerView
+    private val db = FirebaseFirestore.getInstance()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_alimentacao)
+
+        recyclerView = findViewById(R.id.recyclerViewRestaurants)
 
         // Configura o DrawerLayout
         drawerLayout = findViewById(R.id.drawer_layout_alimentacao)
         val menuIcon: ImageView = findViewById(R.id.btnMenu)
         setupDrawer(drawerLayout, menuIcon, this)
 
-        val recyclerView: RecyclerView = findViewById(R.id.recyclerViewRestaurants)
-
-        // Lista de restaurantes para exibir
-        val restaurants = listOf(
-            Restaurant(
-                "Brava Sushi - Praia Brava",
-                "Av. José Medeiros Vieira 2400",
-                "japonesa",
-                "(47) 3366-1851",
-                "19:00 - 00:00",
-                R.drawable.sushi
-            ),
-            Restaurant(
-                "Santo Grill",
-                "Av. Min. Victor Konder, 1212 - Fazenda",
-                "churrasco",
-                "(47) 3246-1076",
-                "11:30 - 16:00",
-                R.drawable.churrasco
-            ),
-            Restaurant(
-            "Pizzaria e Restaurante Vovó Zena",
-            "R. Estefano José Vanolli, 1427 - São Vicente",
-            "Pizzaria",
-            "(47) 3248-4394",
-            "11:00 - 14:00 e 18:00 - 00:00",
-            R.drawable.pizza
-        )
-        )
-
+        // Configura o RecyclerView
         recyclerView.layoutManager = LinearLayoutManager(this)
-        recyclerView.adapter = RestaurantAdapter(restaurants)
+        adapter = RestaurantAdapter(mutableListOf())
+        recyclerView.adapter = adapter
+
+        // Carrega os dados do Firestore
+        carregarDestinos()
+    }
+
+    private fun carregarDestinos() {
+        db.collection("destinos")
+            .whereEqualTo("categoria", "Alimentação")
+            .get()
+            .addOnSuccessListener { documents ->
+                val restaurantList = mutableListOf<Restaurant>()
+
+                if (documents.isEmpty) {
+                    Toast.makeText(this, "Nenhum restaurante encontrado.", Toast.LENGTH_SHORT).show()
+                } else {
+                    for (document in documents) {
+                        val title = document.getString("nome") ?: "Nome não disponível"
+                        val address = document.getString("localizacao") ?: "Endereço não disponível"
+                        val type = document.getString("tipoCozinha") ?: "Tipo não informado"
+                        val hours = document.getString("horario") ?: "Horário não informado"
+
+                        val restaurante = Restaurant(title, address, type, hours)
+                        restaurantList.add(restaurante)
+                    }
+
+                    adapter.setRestaurant(restaurantList)
+                }
+            }
+            .addOnFailureListener { e ->
+                Toast.makeText(this, "Erro ao carregar locais: ${e.message}", Toast.LENGTH_SHORT).show()
+            }
     }
 }
