@@ -6,5 +6,5 @@ data class Transporte(
     val cost: String,
     val phone: String,
     val hours: String,
-    val imageResource: Int
+    //val imageResource: Int
 )

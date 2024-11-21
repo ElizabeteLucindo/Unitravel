@@ -19,6 +19,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var textViewEqueceuSenha: TextView
     private lateinit var textViewCadastrar: TextView
 
+
     // Instância do FirebaseAuth para autenticação
     private lateinit var auth: FirebaseAuth
 

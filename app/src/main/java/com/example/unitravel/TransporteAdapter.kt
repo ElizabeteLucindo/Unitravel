@@ -7,7 +7,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 
-class TransporteAdapter(private val transportes: List<Transporte>) :
+class TransporteAdapter(private var transportes: List<Transporte>) :
     RecyclerView.Adapter<TransporteAdapter.TransporteViewHolder>() {
 
     inner class TransporteViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
@@ -16,7 +16,7 @@ class TransporteAdapter(private val transportes: List<Transporte>) :
         val phone: TextView = itemView.findViewById(R.id.transpPhone)
         val hours: TextView = itemView.findViewById(R.id.transpHours)
         val cost: TextView = itemView.findViewById(R.id.transpCost)
-        val image: ImageView = itemView.findViewById(R.id.transpImage)
+        //val image: ImageView = itemView.findViewById(R.id.transpImage)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TransporteViewHolder {
@@ -26,14 +26,22 @@ class TransporteAdapter(private val transportes: List<Transporte>) :
     }
 
     override fun onBindViewHolder(holder: TransporteViewHolder, position: Int) {
-        val transp = transportes[position]
-        holder.title.text = transp.title
-        holder.info.text = transp.info
-        holder.cost.text = transp.cost
-        holder.phone.text = transp.phone
-        holder.hours.text = transp.hours
-        holder.image.setImageResource(transp.imageResource)
+        val transporte = transportes[position]
+        holder.title.text = transporte.title
+        holder.info.text = "Endereço: ${transporte.info}"
+        holder.cost.text = "Preço: ${transporte.cost}"
+        holder.hours.text = "Horário de funcionamento: ${transporte.hours}"
+        holder.phone.text = "Contato: ${transporte.phone}"
+        //holder.image.setImageResource(transp.imageResource)
     }
 
-    override fun getItemCount() = transportes.size
+    override fun getItemCount(): Int {
+        return transportes.size
+    }
+
+    // Método para atualizar a lista de places
+    fun setTransportes(newTransportes: List<Transporte>) {
+        transportes = newTransportes
+        notifyDataSetChanged()
+    }
 }

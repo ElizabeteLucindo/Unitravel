@@ -44,7 +44,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginHorizontal="60dp"
         android:background="@drawable/spinner_background"
-        android:entries="@array/estado" />
+        />
 
     <TextView
         android:id="@+id/label_cidade"
@@ -68,7 +68,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginHorizontal="60dp"
         android:background="@drawable/spinner_background"
-        android:entries="@array/cidade" />
+       />
 
     <ImageView
         android:id="@+id/aviao"

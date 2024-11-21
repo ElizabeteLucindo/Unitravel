@@ -48,6 +48,15 @@
             android:textSize="14sp" />
 
         <TextView
+            android:id="@+id/restaurantRate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Avaliacao: "
+            android:textColor="#555555"
+            android:textSize="14sp" />
+
+
+        <TextView
             android:id="@+id/restaurantPhone"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

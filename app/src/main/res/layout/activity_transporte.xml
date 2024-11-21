@@ -27,6 +27,7 @@
                 />
 
             <TextView
+                android:id="@+id/textViewCabecalho"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -92,15 +93,53 @@
 
         <!-- Conteúdo do menu-->
         <TextView
-            android:id="@+id/menu_option1"
+            android:id="@+id/menu_inicio"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Opção 1" />
+            android:text="Início"
+            android:paddingBottom="10dp"/>
         <TextView
             android:id="@+id/menu_cadastrar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Cadastrar" />
+            android:text="Cadastrar"
+            android:paddingBottom="10dp"/>
+
+        <TextView
+            android:id="@+id/menu_hoteis"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Hotéis"
+            android:paddingBottom="10dp"/>
+
+        <TextView
+            android:id="@+id/menu_alimentacao"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Alimentação"
+            android:paddingBottom="10dp"/>
+
+        <TextView
+            android:id="@+id/menu_atividades"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Atividades"
+            android:paddingBottom="10dp"/>
+
+        <TextView
+            android:id="@+id/menu_transporte"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Transporte"
+            android:paddingBottom="10dp"/>
+
+        <TextView
+            android:id="@+id/menu_faleConosco"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Fale Conosco"
+            android:paddingBottom="10dp"/>
+
         <TextView
             android:id="@+id/sair"
             android:layout_width="wrap_content"

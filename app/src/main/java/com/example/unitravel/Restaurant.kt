@@ -5,6 +5,8 @@ data class Restaurant(
     val address: String,
     val type: String,
     val hours: String,
+    val phone: String,
+    val rate: String
     // val imageResource: Int
 )
 

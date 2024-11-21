@@ -8,7 +8,6 @@
     android:background="@color/blue"
     tools:context=".CadastroActivity">
 
-
     <TextView
         android:id="@+id/textView"
         android:layout_width="wrap_content"
@@ -22,90 +21,98 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
+    <EditText
+        android:id="@+id/email"
+        android:layout_width="231dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="30dp"
+        android:background="@drawable/edittext_white"
+        android:drawableLeft="@drawable/baseline_email_24"
+        android:drawablePadding="8dp"
+        android:hint="E-mail"
+        android:inputType="textEmailAddress"
+        android:paddingStart="14dp"
+        android:textColor="@color/cinza"
+        app:layout_constraintTop_toBottomOf="@id/textView"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
 
     <EditText
         android:id="@+id/usuario"
         android:layout_width="231dp"
         android:layout_height="48dp"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="20dp"
         android:background="@drawable/edittext_white"
         android:drawableLeft="@drawable/icon_username_menor"
-        android:drawablePadding="38dp"
+        android:drawablePadding="8dp"
         android:hint="Usuário"
         android:inputType="textPersonName"
         android:paddingStart="14dp"
         android:textColor="@color/cinza"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/email"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/email" />
-
-    <EditText
-        android:id="@+id/email"
-        android:layout_width="231dp"
-        android:layout_height="48dp"
-        android:layout_marginTop="68dp"
-        android:background="@drawable/edittext_white"
-        android:drawableLeft="@drawable/baseline_email_24"
-        android:drawablePadding="38dp"
-        android:hint="E-mail"
-        android:inputType="textPersonName"
-        android:paddingStart="14dp"
-        android:textColor="@color/cinza"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/textView" />
+        app:layout_constraintEnd_toEndOf="parent" />
 
     <EditText
         android:id="@+id/senha"
         android:layout_width="231dp"
         android:layout_height="48dp"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="20dp"
         android:background="@drawable/edittext_white"
         android:drawableLeft="@drawable/icon_lock"
-        android:drawablePadding="38dp"
+        android:drawablePadding="8dp"
         android:hint="Senha"
         android:inputType="textPassword"
         android:paddingStart="14dp"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:textColor="@color/cinza"
+        app:layout_constraintTop_toBottomOf="@id/usuario"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/usuario" />
+        app:layout_constraintEnd_toEndOf="parent" />
+
 
     <Button
         android:id="@+id/buttonCadastro"
         android:layout_width="231dp"
         android:layout_height="48dp"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="20dp"
         android:backgroundTint="@color/azul_claro"
         android:text="Cadastro"
         android:textAlignment="center"
         android:textColor="@color/black"
-        app:iconSize="20dp"
-        app:iconTint="@color/black"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/senha"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/senha" />
+        app:layout_constraintEnd_toEndOf="parent" />
 
     <TextView
         android:id="@+id/contaExistente"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="20dp"
         android:text="Já tenho uma conta"
         android:textColor="@color/black"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/buttonCadastro"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/buttonCadastro" />
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <TextView
+        android:id="@+id/TextviewMensagem"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="Caso seja secretário do turismo,\n favor entrar em contato."
+        android:textColor="@color/white"
+        app:layout_constraintTop_toBottomOf="@id/contaExistente"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
 
     <ImageView
         android:id="@+id/aviao"
         android:layout_width="284dp"
         android:layout_height="260dp"
-        android:layout_marginTop="540dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.496"
+        android:layout_marginTop="20dp"
+        app:layout_constraintTop_toBottomOf="@id/TextviewMensagem"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:srcCompat="@drawable/aviao1" />
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -6,12 +6,15 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.drawerlayout.widget.DrawerLayout
 import android.widget.ImageView
+import android.widget.TextView
 import setupDrawer
 import android.widget.Toast
 import com.google.firebase.firestore.FirebaseFirestore
 
 
 class HoteisActivity : AppCompatActivity() {
+
+    private lateinit var textViewCabecalho: TextView
     private lateinit var drawerLayout: DrawerLayout
     private lateinit var adapter: HotelAdapter
     private lateinit var recyclerView: RecyclerView
@@ -22,6 +25,7 @@ class HoteisActivity : AppCompatActivity() {
         setContentView(R.layout.activity_hoteis)
 
         recyclerView = findViewById(R.id.recyclerViewHoteis)
+        textViewCabecalho = findViewById(R.id.textViewCabecalho)
 
         // Configura o DrawerLayout
         drawerLayout = findViewById(R.id.drawer_layout_hoteis)
@@ -33,13 +37,23 @@ class HoteisActivity : AppCompatActivity() {
         adapter = HotelAdapter(mutableListOf()) // Inicia com uma lista vazia
         recyclerView.adapter = adapter
 
+        val sharedPreferences = getSharedPreferences("user_preferences", MODE_PRIVATE)
+        val cidade = sharedPreferences.getString("cidade", "Cidade") ?: ""
+        val estado = sharedPreferences.getString("estado", "Estado") ?: ""
+
+        // Atualiza o texto do TextView
+        textViewCabecalho.text = "$cidade-$estado"
+
         // Carrega os dados do Firestore
-        carregarDestinos()
+        carregarDestinos(cidade, estado)
     }
 
-    private fun carregarDestinos(){
+    private fun carregarDestinos(cidade: String, estado: String){
+
         db.collection("destinos")
             .whereEqualTo("categoria", "Hotéis")
+            .whereEqualTo("cidade", cidade)
+            .whereEqualTo("estado", estado)
             .get()
             .addOnSuccessListener { documents ->
                 val hoteisList = mutableListOf<Hotel>()

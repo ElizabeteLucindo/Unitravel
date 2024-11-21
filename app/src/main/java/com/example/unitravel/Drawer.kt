@@ -1,16 +1,29 @@
 import android.content.Context
 import android.content.Intent
+import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.core.view.GravityCompat
+import com.example.unitravel.AlimentacaoActivity
+import com.example.unitravel.AtividadesActivity
 import com.example.unitravel.CadastroDestinoActivity
 import com.example.unitravel.EscolhaUsuarioActivity
+import com.example.unitravel.HoteisActivity
 import com.example.unitravel.MainActivity
 import com.example.unitravel.R
+import com.example.unitravel.TransporteActivity
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.FirebaseFirestore
 
-// Função para configurar o DrawerLayout
 fun setupDrawer(drawerLayout: DrawerLayout, menuIcon: ImageView, context: Context) {
+
+    // Referências ao Firebase
+    val auth = FirebaseAuth.getInstance()
+    val db = FirebaseFirestore.getInstance()
+    val currentUser = auth.currentUser
+
+    // Configurações do ícone do menu
     menuIcon.setOnClickListener {
         if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
             drawerLayout.closeDrawer(GravityCompat.START)
@@ -19,35 +32,73 @@ fun setupDrawer(drawerLayout: DrawerLayout, menuIcon: ImageView, context: Contex
         }
     }
 
-    // Configure o clique para a Opção 1 no menu
-    val option1 = drawerLayout.findViewById<TextView>(R.id.menu_option1)
-    option1.setOnClickListener {
-        // Fechar o menu lateral
-        drawerLayout.closeDrawer(GravityCompat.START)
+    // Referências aos itens do menu
+    val cadastrar = drawerLayout.findViewById<TextView>(R.id.menu_cadastrar)
 
-        // Iniciar a nova Activity (Exemplo: CadastroDestinoActivity)
+    // Verifica o tipo do usuário
+    if (currentUser != null) {
+        db.collection("usuarios").document(currentUser.uid).get()
+            .addOnSuccessListener { document ->
+                val tipoUsuario = document.getString("tipoUsuario")
+                if (tipoUsuario == "Secretaria do Turismo") {
+                    cadastrar.visibility = View.VISIBLE // Exibe o item
+                } else {
+                    cadastrar.visibility = View.GONE // Oculta o item
+                }
+            }
+            .addOnFailureListener { e ->
+                cadastrar.visibility = View.GONE // Oculta em caso de erro
+                e.printStackTrace()
+            }
+    } else {
+        cadastrar.visibility = View.GONE // Oculta se o usuário não estiver logado
+    }
+
+    // Configuração dos outros itens do menu
+    val inicio = drawerLayout.findViewById<TextView>(R.id.menu_inicio)
+    inicio.setOnClickListener {
+        drawerLayout.closeDrawer(GravityCompat.START)
         val intent = Intent(context, EscolhaUsuarioActivity::class.java)
         context.startActivity(intent)
     }
 
-    // Clique para a Cadastrar no menu
-    val cadastrar = drawerLayout.findViewById<TextView>(R.id.menu_cadastrar)
     cadastrar.setOnClickListener {
-        // Fechar o menu lateral
         drawerLayout.closeDrawer(GravityCompat.START)
-
-        // Iniciar a nova Activity (Exemplo: CadastroDestinoActivity)
         val intent = Intent(context, CadastroDestinoActivity::class.java)
         context.startActivity(intent)
     }
 
-    // Clique para a Cadastrar no menu
+    val menuHoteis = drawerLayout.findViewById<TextView>(R.id.menu_hoteis)
+    menuHoteis.setOnClickListener {
+        drawerLayout.closeDrawer(GravityCompat.START)
+        val intent = Intent(context, HoteisActivity::class.java)
+        context.startActivity(intent)
+    }
+
+    val menuAtividades = drawerLayout.findViewById<TextView>(R.id.menu_atividades)
+    menuAtividades.setOnClickListener {
+        drawerLayout.closeDrawer(GravityCompat.START)
+        val intent = Intent(context, AtividadesActivity::class.java)
+        context.startActivity(intent)
+    }
+
+    val menuAlimentacao = drawerLayout.findViewById<TextView>(R.id.menu_alimentacao)
+    menuAlimentacao.setOnClickListener {
+        drawerLayout.closeDrawer(GravityCompat.START)
+        val intent = Intent(context, AlimentacaoActivity::class.java)
+        context.startActivity(intent)
+    }
+
+    val menuTransporte = drawerLayout.findViewById<TextView>(R.id.menu_transporte)
+    menuTransporte.setOnClickListener {
+        drawerLayout.closeDrawer(GravityCompat.START)
+        val intent = Intent(context, TransporteActivity::class.java)
+        context.startActivity(intent)
+    }
+
     val sair = drawerLayout.findViewById<TextView>(R.id.sair)
     sair.setOnClickListener {
-        // Fechar o menu lateral
         drawerLayout.closeDrawer(GravityCompat.START)
-
-        // Iniciar a nova Activity (Exemplo: CadastroDestinoActivity)
         val intent = Intent(context, MainActivity::class.java)
         context.startActivity(intent)
     }

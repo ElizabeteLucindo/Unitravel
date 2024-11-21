@@ -26,6 +26,8 @@ class CadastroDestinoActivity : AppCompatActivity() {
     private lateinit var label_tipoCozinha: TextView
     private lateinit var label_avaliacao: TextView
     private lateinit var label_servicos: TextView
+    private lateinit var editTextCidade: EditText
+    private lateinit var editTextEstado: EditText
     private lateinit var btnCadastro: Button
 
 
@@ -49,6 +51,8 @@ class CadastroDestinoActivity : AppCompatActivity() {
         label_tipoCozinha = findViewById(R.id.labelTipoCozinha)
         label_avaliacao = findViewById(R.id.labelAvaliacao)
         label_servicos = findViewById(R.id.labelServicos)
+        editTextCidade = findViewById(R.id.cidade)
+        editTextEstado = findViewById(R.id.estado)
         btnCadastro = findViewById(R.id.buttonCadastro)
 
 
@@ -120,9 +124,16 @@ class CadastroDestinoActivity : AppCompatActivity() {
         val tipoCozinhaText = tipoCozinha.selectedItem.toString()
         val avaliacaoText = avaliacao.selectedItem.toString()
         val servicoText = servicos.text.toString()
+        val cidade = editTextCidade.text.toString()
+        val estado = editTextEstado.text.toString()
+
+        if (cidade.isEmpty() || estado.isEmpty()) {
+            Toast.makeText(this, "Por favor, preencha todos os campos.", Toast.LENGTH_SHORT).show()
+            return
+        }
 
         // Verifica se todos os campos foram preenchidos
-        if (nome.isEmpty() || localizacaoText.isEmpty() || horarioText.isEmpty() || custoText.isEmpty() || contatoText.isEmpty()) {
+        if (nome.isEmpty() || localizacaoText.isEmpty() || horarioText.isEmpty()) {
             Toast.makeText(this, "Por favor, preencha todos os campos", Toast.LENGTH_SHORT).show()
             return
         }
@@ -139,7 +150,9 @@ class CadastroDestinoActivity : AppCompatActivity() {
             "localizacao" to localizacaoText,
             "horario" to horarioText,
             "custo" to custoText,
-            "contato" to contatoText
+            "contato" to contatoText,
+            "cidade" to cidade,
+            "estado" to estado
         )
 
         // Adiciona os campos adicionais caso a categoria seja "Alimentação"
@@ -173,6 +186,8 @@ class CadastroDestinoActivity : AppCompatActivity() {
         custo.text.clear()
         servicos.text.clear()
         contato.text.clear()
+        editTextCidade.text.clear()
+        editTextEstado.text.clear()
         tipoCozinha.setSelection(0)
         avaliacao.setSelection(0)
         categoria.setSelection(0)

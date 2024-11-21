@@ -100,6 +100,51 @@
             app:layout_constraintTop_toBottomOf="@id/labelLocalizacao" />
 
         <TextView
+            android:id="@+id/labelCidade"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="25dp"
+            android:text="Cidade"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintHorizontal_bias="0.255"
+            app:layout_constraintTop_toBottomOf="@id/Localizacao" />
+
+        <EditText
+            android:id="@+id/cidade"
+            android:layout_width="234dp"
+            android:layout_height="38dp"
+            android:layout_marginTop="4dp"
+            android:background="@drawable/edittext_white_square"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/labelCidade" />
+
+        <TextView
+            android:id="@+id/labelEstado"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="25dp"
+            android:text="Estado (sigla - Ex.: SC)"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.334"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/cidade" />
+
+        <EditText
+            android:id="@+id/estado"
+            android:layout_width="234dp"
+            android:layout_height="38dp"
+            android:layout_marginTop="4dp"
+            android:background="@drawable/edittext_white_square"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/labelEstado" />
+        <TextView
             android:id="@+id/labelHorario"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -110,7 +155,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.367"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/Localizacao" />
+            app:layout_constraintTop_toBottomOf="@id/estado" />
 
         <EditText
             android:id="@+id/horario"
