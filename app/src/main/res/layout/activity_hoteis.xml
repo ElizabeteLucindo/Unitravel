@@ -94,59 +94,176 @@
         android:padding="16dp">
 
         <!-- Conteúdo do menu-->
-        <TextView
-            android:id="@+id/menu_inicio"
-            android:layout_width="wrap_content"
+        <!-- Inicio -->
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Início"
-            android:paddingBottom="10dp"/>
-        <TextView
-            android:id="@+id/menu_cadastrar"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Cadastrar"
-            android:paddingBottom="10dp"/>
+            android:orientation="horizontal"
+            android:paddingBottom="20dp">
 
-        <TextView
-            android:id="@+id/menu_hoteis"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Hotéis"
-            android:paddingBottom="10dp"/>
+            <ImageView
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:src="@drawable/baseline_home_24"
+                android:layout_gravity="center_vertical"
+                />
+            <TextView
+                android:id="@+id/menu_inicio"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Início"
+                android:textSize="15dp"
+                android:layout_marginStart="10dp"
+                />
+        </LinearLayout>
 
-        <TextView
-            android:id="@+id/menu_alimentacao"
-            android:layout_width="wrap_content"
+        <!-- Cadastrar -->
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Alimentação"
-            android:paddingBottom="10dp"/>
+            android:orientation="horizontal"
+            android:paddingBottom="20dp">
 
-        <TextView
-            android:id="@+id/menu_atividades"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Atividades"
-            android:paddingBottom="10dp"/>
+            <ImageView
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:src="@drawable/baseline_cadastrar"
+                android:layout_gravity="center_vertical"/>
+            <TextView
+                android:id="@+id/menu_cadastrar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Cadastrar"
+                android:textSize="15dp"
+                android:layout_marginStart="10dp"
+                />
+        </LinearLayout>
 
-        <TextView
-            android:id="@+id/menu_transporte"
-            android:layout_width="wrap_content"
+        <!-- Hotéis -->
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Transporte"
-            android:paddingBottom="10dp"/>
+            android:orientation="horizontal"
+            android:paddingBottom="20dp">
 
-        <TextView
-            android:id="@+id/menu_faleConosco"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Fale Conosco"
-            android:paddingBottom="10dp"/>
+            <ImageView
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:src="@drawable/baseline_hotel_24"
+                android:layout_gravity="center_vertical"/>
+            <TextView
+                android:id="@+id/menu_hoteis"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Hotéis"
+                android:textSize="15dp"
+                android:layout_marginStart="10dp"
+                />
+        </LinearLayout>
 
-        <TextView
-            android:id="@+id/sair"
-            android:layout_width="wrap_content"
+        <!-- Alimentação -->
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Sair" />
+            android:orientation="horizontal"
+            android:paddingBottom="20dp">
+            <ImageView
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:src="@drawable/baseline_restaurant_24"
+                android:layout_gravity="center_vertical"/>
+            <TextView
+                android:id="@+id/menu_alimentacao"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Alimentação"
+                android:textSize="15dp"
+                android:layout_marginStart="10dp"
+                />
+        </LinearLayout>
+
+        <!-- Atividades -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingBottom="20dp">
+            <ImageView
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:src="@drawable/icone_lazer"
+                android:layout_gravity="center_vertical"/>
+            <TextView
+                android:id="@+id/menu_atividades"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Atividades"
+                android:textSize="15dp"
+                android:layout_marginStart="10dp"
+                />
+        </LinearLayout>
+
+        <!-- Transporte -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingBottom="20dp">
+            <ImageView
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:src="@drawable/baseline_directions_bus_24"
+                android:layout_gravity="center_vertical"/>
+            <TextView
+                android:id="@+id/menu_transporte"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Transporte"
+                android:textSize="15dp"
+                android:layout_marginStart="10dp"
+                />
+        </LinearLayout>
+
+        <!-- Fale Conosco -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingBottom="20dp">>
+            <ImageView
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:src="@drawable/baseline_message_24"
+                android:layout_gravity="center_vertical"/>
+            <TextView
+                android:id="@+id/menu_faleConosco"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Fale Conosco"
+                android:textSize="15dp"
+                android:layout_marginStart="10dp"/>
+        </LinearLayout>
+
+        <!-- Sair -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingBottom="20dp">
+            <ImageView
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:src="@drawable/baseline_logout_24"
+                android:layout_gravity="center_vertical"
+                />
+            <TextView
+                android:id="@+id/sair"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Sair"
+                android:textSize="15dp"
+                android:layout_marginStart="10dp"/>
+        </LinearLayout>
 
     </LinearLayout>
 
