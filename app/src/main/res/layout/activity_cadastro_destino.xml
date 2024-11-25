@@ -316,6 +316,16 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/labelFotos" />
 
+        <ImageView
+            android:id="@+id/imagemSelecionada"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:layout_marginTop="16dp"
+            android:scaleType="centerCrop"
+            app:layout_constraintTop_toBottomOf="@id/btnSelectImage"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
         <Button
         android:id="@+id/buttonCadastro"
         android:layout_width="231dp"
@@ -329,7 +339,8 @@
         app:iconTint="@color/black"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/btnSelectImage" />
+        app:layout_constraintTop_toBottomOf="@id/btnSelectImage"
+        android:layout_marginBottom="30dp"/>
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

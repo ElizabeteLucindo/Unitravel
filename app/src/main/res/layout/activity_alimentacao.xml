@@ -140,7 +140,8 @@
         android:layout_gravity="start"
         android:orientation="vertical"
         android:background="@color/azul2"
-        android:padding="16dp">
+        android:padding="16dp"
+        >
 
         <!-- Conteúdo do menu-->
         <!-- Inicio -->
@@ -163,6 +164,7 @@
                 android:text="Início"
                 android:textSize="15dp"
                 android:layout_marginStart="10dp"
+                android:textColor="@color/black"
                 />
         </LinearLayout>
 
@@ -185,6 +187,7 @@
                 android:text="Cadastrar"
                 android:textSize="15dp"
                 android:layout_marginStart="10dp"
+                android:textColor="@color/black"
                 />
         </LinearLayout>
 
@@ -207,7 +210,7 @@
                 android:text="Hotéis"
                 android:textSize="15dp"
                 android:layout_marginStart="10dp"
-                />
+                android:textColor="@color/black"/>
         </LinearLayout>
 
         <!-- Alimentação -->
@@ -228,7 +231,7 @@
                 android:text="Alimentação"
                 android:textSize="15dp"
                 android:layout_marginStart="10dp"
-                />
+                android:textColor="@color/black"/>
         </LinearLayout>
 
         <!-- Atividades -->
@@ -240,7 +243,7 @@
             <ImageView
                 android:layout_width="24dp"
                 android:layout_height="24dp"
-                android:src="@drawable/icone_lazer"
+                android:src="@drawable/baseline_tree"
                 android:layout_gravity="center_vertical"/>
             <TextView
                 android:id="@+id/menu_atividades"
@@ -249,7 +252,7 @@
                 android:text="Atividades"
                 android:textSize="15dp"
                 android:layout_marginStart="10dp"
-               />
+                android:textColor="@color/black"/>
         </LinearLayout>
 
         <!-- Transporte -->
@@ -270,7 +273,7 @@
                 android:text="Transporte"
                 android:textSize="15dp"
                 android:layout_marginStart="10dp"
-                />
+                android:textColor="@color/black"/>
         </LinearLayout>
 
         <!-- Fale Conosco -->
@@ -290,7 +293,8 @@
                 android:layout_height="wrap_content"
                 android:text="Fale Conosco"
                 android:textSize="15dp"
-                android:layout_marginStart="10dp"/>
+                android:layout_marginStart="10dp"
+                android:textColor="@color/black"/>
         </LinearLayout>
 
         <!-- Sair -->
@@ -311,7 +315,8 @@
                 android:layout_height="wrap_content"
                 android:text="Sair"
                 android:textSize="15dp"
-                android:layout_marginStart="10dp"/>
+                android:layout_marginStart="10dp"
+                android:textColor="@color/black"/>
         </LinearLayout>
 
     </LinearLayout>
