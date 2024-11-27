@@ -7,9 +7,6 @@ import android.widget.Spinner
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.unitravel.Destino
-import com.example.unitravel.DestinosAdapter
-import com.example.unitravel.R
 import com.google.firebase.firestore.FirebaseFirestore
 
 class GerenciarDestinosActivity : AppCompatActivity() {

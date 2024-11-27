@@ -16,6 +16,12 @@
         android:theme="@style/Theme.Unitravel"
         tools:targetApi="31">
         <activity
+            android:name=".UsuariosActivity"
+            android:exported="false" />
+        <activity
+            android:name=".FaleConoscoActivity"
+            android:exported="false" />
+        <activity
             android:name=".GerenciarDestinosActivity"
             android:exported="false" />
         <activity
