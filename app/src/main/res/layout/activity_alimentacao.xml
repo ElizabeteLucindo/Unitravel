@@ -72,57 +72,41 @@
                 android:layout_marginTop="12dp"/>
         </LinearLayout>
 
-        <!-- Filtros de pesquisa -->
-        <HorizontalScrollView
+
+        <LinearLayout
             android:id="@+id/filter_section"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/labelAlimetacao"
-            android:layout_marginBottom="8dp">
+            android:orientation="horizontal"
+            android:gravity="center_horizontal"
+            android:padding="8dp"
+            android:layout_below="@id/labelAlimetacao">
 
-            <LinearLayout
-                android:layout_width="wrap_content"
+            <Spinner
+                android:id="@+id/tipoCozinhaSpinner"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:gravity="center_horizontal">
+                android:layout_weight="1"
+                android:background="@drawable/spinner_background"
+                android:paddingRight="25dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginLeft="4dp"
+                android:layout_marginEnd="8dp"
+                android:entries="@array/tipo_de_cozinha"
+                />
 
-                <Spinner
-                    android:id="@+id/tipoCozinhaSpinner"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/spinner_background"
-                    android:paddingRight="25dp"
-                    android:layout_marginRight="4dp"
-                    android:layout_marginLeft="4dp"
-                    android:entries="@array/tipo_de_cozinha"
-                    />
+            <Spinner
+                android:id="@+id/avaliacaoSpinner"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@drawable/spinner_background"
+                android:paddingRight="25dp"
+                android:layout_marginRight="4dp"
+                android:entries="@array/avaliacao"
+                android:layout_marginStart="8dp"/>
 
-                <Spinner
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/spinner_background"
-                    android:paddingRight="25dp"
-                    android:layout_marginRight="4dp"
-                    android:entries="@array/preco" />
-
-                <Spinner
-                    android:id="@+id/avaliacaoSpinner"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/spinner_background"
-                    android:paddingRight="25dp"
-                    android:layout_marginRight="4dp"
-                    android:entries="@array/avaliacao" />
-
-                <Spinner
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/spinner_background"
-                    android:paddingRight="25dp"
-                    android:entries="@array/distancia" />
-            </LinearLayout>
-
-        </HorizontalScrollView>
+        </LinearLayout>
 
         <!-- RecyclerView para lista de restaurantes -->
         <androidx.recyclerview.widget.RecyclerView
@@ -185,6 +169,29 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Cadastrar"
+                android:textSize="15dp"
+                android:layout_marginStart="10dp"
+                android:textColor="@color/black"
+                />
+        </LinearLayout>
+
+        <!-- Gerenciar Destinos -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingBottom="20dp">
+
+            <ImageView
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:src="@drawable/baseline_settings_24"
+                android:layout_gravity="center_vertical"/>
+            <TextView
+                android:id="@+id/menu_gerenciar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Gerenciar Destino"
                 android:textSize="15dp"
                 android:layout_marginStart="10dp"
                 android:textColor="@color/black"

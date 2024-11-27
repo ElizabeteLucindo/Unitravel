@@ -167,9 +167,15 @@ class CadastroDestinoActivity : AppCompatActivity() {
             destino["avaliacao"] = avaliacaoText
         }
 
-        // Salva no Firestore
+        // Salva no Firestore e captura o ID gerado
         db.collection("destinos").add(destino)
-            .addOnSuccessListener {
+            .addOnSuccessListener { documentReference ->
+                // Agora o documentReference.id contém o ID gerado automaticamente
+                val idDestino = documentReference.id
+                // Agora você pode adicionar o id ao objeto destino (caso tenha um modelo de Destino)
+                destino["id"] = idDestino
+
+                // Exibe uma mensagem de sucesso
                 Toast.makeText(this, "Destino cadastrado com sucesso!", Toast.LENGTH_SHORT).show()
                 limparCampos()
             }
@@ -177,6 +183,7 @@ class CadastroDestinoActivity : AppCompatActivity() {
                 Toast.makeText(this, "Erro ao cadastrar destino: ${e.message}", Toast.LENGTH_SHORT).show()
             }
     }
+
 
     private fun limparCampos() {
         // Limpa os campos após o cadastro

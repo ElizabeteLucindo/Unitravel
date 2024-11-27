@@ -11,7 +11,7 @@
         android:id="@+id/transpImage"
         android:layout_width="80dp"
         android:layout_height="80dp"
-        android:src="@drawable/sushi"
+        android:src="@drawable/img"
         android:scaleType="centerCrop"
         android:layout_gravity="center_vertical"
         android:layout_marginEnd="8dp" />

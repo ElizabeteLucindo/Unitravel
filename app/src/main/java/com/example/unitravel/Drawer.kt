@@ -9,6 +9,7 @@ import com.example.unitravel.AlimentacaoActivity
 import com.example.unitravel.AtividadesActivity
 import com.example.unitravel.CadastroDestinoActivity
 import com.example.unitravel.EscolhaUsuarioActivity
+import com.example.unitravel.GerenciarDestinosActivity
 import com.example.unitravel.HoteisActivity
 import com.example.unitravel.MainActivity
 import com.example.unitravel.R
@@ -34,6 +35,7 @@ fun setupDrawer(drawerLayout: DrawerLayout, menuIcon: ImageView, context: Contex
 
     // Referências aos itens do menu
     val cadastrar = drawerLayout.findViewById<TextView>(R.id.menu_cadastrar)
+    val gerenciar_destino = drawerLayout.findViewById<TextView>(R.id.menu_gerenciar)
 
     // Verifica o tipo do usuário
     if (currentUser != null) {
@@ -42,16 +44,20 @@ fun setupDrawer(drawerLayout: DrawerLayout, menuIcon: ImageView, context: Contex
                 val tipoUsuario = document.getString("tipoUsuario")
                 if (tipoUsuario == "Secretaria do Turismo") {
                     cadastrar.visibility = View.VISIBLE // Exibe o item
+                    gerenciar_destino.visibility = View.VISIBLE
                 } else {
                     cadastrar.visibility = View.GONE // Oculta o item
+                    gerenciar_destino.visibility = View.GONE
                 }
             }
             .addOnFailureListener { e ->
                 cadastrar.visibility = View.GONE // Oculta em caso de erro
+                gerenciar_destino.visibility = View.GONE
                 e.printStackTrace()
             }
     } else {
         cadastrar.visibility = View.GONE // Oculta se o usuário não estiver logado
+        gerenciar_destino.visibility = View.GONE
     }
 
     // Configuração dos outros itens do menu
@@ -65,6 +71,12 @@ fun setupDrawer(drawerLayout: DrawerLayout, menuIcon: ImageView, context: Contex
     cadastrar.setOnClickListener {
         drawerLayout.closeDrawer(GravityCompat.START)
         val intent = Intent(context, CadastroDestinoActivity::class.java)
+        context.startActivity(intent)
+    }
+
+    gerenciar_destino.setOnClickListener {
+        drawerLayout.closeDrawer(GravityCompat.START)
+        val intent = Intent(context, GerenciarDestinosActivity::class.java)
         context.startActivity(intent)
     }
 
