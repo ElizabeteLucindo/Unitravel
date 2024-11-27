@@ -36,11 +36,6 @@
                 android:textSize="20sp"
                 android:gravity="center" />
 
-            <androidx.appcompat.widget.AppCompatButton
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:background="@drawable/baseline_account_circle_24"/>
-
         </LinearLayout>
 
         <!-- Ícone e título para a seção de alimentação -->
@@ -146,52 +141,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Início"
-                android:textSize="15dp"
-                android:layout_marginStart="10dp"
-                android:textColor="@color/black"
-                />
-        </LinearLayout>
-
-        <!-- Cadastrar -->
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:paddingBottom="20dp">
-
-            <ImageView
-                android:layout_width="24dp"
-                android:layout_height="24dp"
-                android:src="@drawable/baseline_cadastrar"
-                android:layout_gravity="center_vertical"/>
-            <TextView
-                android:id="@+id/menu_cadastrar"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Cadastrar"
-                android:textSize="15dp"
-                android:layout_marginStart="10dp"
-                android:textColor="@color/black"
-                />
-        </LinearLayout>
-
-        <!-- Gerenciar Destinos -->
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:paddingBottom="20dp">
-
-            <ImageView
-                android:layout_width="24dp"
-                android:layout_height="24dp"
-                android:src="@drawable/baseline_settings_24"
-                android:layout_gravity="center_vertical"/>
-            <TextView
-                android:id="@+id/menu_gerenciar"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Gerenciar Destino"
                 android:textSize="15dp"
                 android:layout_marginStart="10dp"
                 android:textColor="@color/black"
@@ -304,12 +253,62 @@
                 android:textColor="@color/black"/>
         </LinearLayout>
 
-        <!-- Sair -->
+        <!-- Cadastrar -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:paddingBottom="20dp">
+
+            <ImageView
+                android:id="@+id/icon_cadastrar"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:src="@drawable/baseline_cadastrar"
+                android:layout_gravity="center_vertical"/>
+            <TextView
+                android:id="@+id/menu_cadastrar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Cadastrar"
+                android:textSize="15dp"
+                android:layout_marginStart="10dp"
+                android:textColor="@color/black"
+                />
+        </LinearLayout>
+
+        <!-- Gerenciar Destinos -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingBottom="20dp">
+
+            <ImageView
+                android:id="@+id/icon_gerenciar"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:src="@drawable/baseline_settings_24"
+                android:layout_gravity="center_vertical"/>
+            <TextView
+                android:id="@+id/menu_gerenciar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Gerenciar Destino"
+                android:textSize="15dp"
+                android:layout_marginStart="10dp"
+                android:textColor="@color/black"
+                />
+        </LinearLayout>
+
+        <!-- Sair -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingBottom="20dp"
+            android:layout_alignParentBottom="true"
+            >
             <ImageView
                 android:layout_width="24dp"
                 android:layout_height="24dp"

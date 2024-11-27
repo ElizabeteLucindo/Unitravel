@@ -3,12 +3,14 @@ import android.content.Intent
 import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.appcompat.widget.AppCompatButton
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.core.view.GravityCompat
 import com.example.unitravel.AlimentacaoActivity
 import com.example.unitravel.AtividadesActivity
 import com.example.unitravel.CadastroDestinoActivity
 import com.example.unitravel.EscolhaUsuarioActivity
+import com.example.unitravel.FaleConoscoActivity
 import com.example.unitravel.GerenciarDestinosActivity
 import com.example.unitravel.HoteisActivity
 import com.example.unitravel.MainActivity
@@ -36,6 +38,8 @@ fun setupDrawer(drawerLayout: DrawerLayout, menuIcon: ImageView, context: Contex
     // Referências aos itens do menu
     val cadastrar = drawerLayout.findViewById<TextView>(R.id.menu_cadastrar)
     val gerenciar_destino = drawerLayout.findViewById<TextView>(R.id.menu_gerenciar)
+    val icon_cadastrar = drawerLayout.findViewById<ImageView>(R.id.icon_cadastrar)
+    val icon_gerenciar = drawerLayout.findViewById<ImageView>(R.id.icon_gerenciar)
 
     // Verifica o tipo do usuário
     if (currentUser != null) {
@@ -45,19 +49,27 @@ fun setupDrawer(drawerLayout: DrawerLayout, menuIcon: ImageView, context: Contex
                 if (tipoUsuario == "Secretaria do Turismo") {
                     cadastrar.visibility = View.VISIBLE // Exibe o item
                     gerenciar_destino.visibility = View.VISIBLE
+                    icon_cadastrar.visibility = View.VISIBLE
+                    icon_gerenciar.visibility = View.VISIBLE
                 } else {
                     cadastrar.visibility = View.GONE // Oculta o item
                     gerenciar_destino.visibility = View.GONE
+                    icon_cadastrar.visibility = View.GONE
+                    icon_gerenciar.visibility = View.GONE
                 }
             }
             .addOnFailureListener { e ->
                 cadastrar.visibility = View.GONE // Oculta em caso de erro
                 gerenciar_destino.visibility = View.GONE
+                icon_cadastrar.visibility = View.GONE
+                icon_gerenciar.visibility = View.GONE
                 e.printStackTrace()
             }
     } else {
         cadastrar.visibility = View.GONE // Oculta se o usuário não estiver logado
         gerenciar_destino.visibility = View.GONE
+        icon_cadastrar.visibility = View.GONE
+        icon_gerenciar.visibility = View.GONE
     }
 
     // Configuração dos outros itens do menu
@@ -108,10 +120,18 @@ fun setupDrawer(drawerLayout: DrawerLayout, menuIcon: ImageView, context: Contex
         context.startActivity(intent)
     }
 
+    val menuFaleConosco = drawerLayout.findViewById<TextView>(R.id.menu_faleConosco)
+    menuFaleConosco.setOnClickListener {
+        drawerLayout.closeDrawer(GravityCompat.START)
+        val intent = Intent(context, FaleConoscoActivity::class.java)
+        context.startActivity(intent)
+    }
+
     val sair = drawerLayout.findViewById<TextView>(R.id.sair)
     sair.setOnClickListener {
         drawerLayout.closeDrawer(GravityCompat.START)
         val intent = Intent(context, MainActivity::class.java)
         context.startActivity(intent)
     }
+
 }

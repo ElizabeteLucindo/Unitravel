@@ -17,7 +17,6 @@ class CadastroActivity : AppCompatActivity() {
     private lateinit var editTextSenha: EditText
     private lateinit var botaoCadastro: Button
     private lateinit var textViewContaExistente: TextView
-
     private lateinit var auth: FirebaseAuth
     private lateinit var db: FirebaseFirestore
 
