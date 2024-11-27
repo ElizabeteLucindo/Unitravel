@@ -38,29 +38,25 @@ class CadastroDestinoActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_cadastro_destino)
 
-        // Conectando os elementos XML aos elementos da atividade
-        nomeDestino = findViewById(R.id.nomeDestino)
-        categoria = findViewById(R.id.Categoria)
-        localizacao = findViewById(R.id.Localizacao)
-        horario = findViewById(R.id.horario)
-        custo = findViewById(R.id.custo)
-        contato = findViewById(R.id.contato)
-        tipoCozinha = findViewById(R.id.tipoCozinha)
-        avaliacao = findViewById(R.id.avaliacao)
-        servicos = findViewById(R.id.servicos)
-        label_tipoCozinha = findViewById(R.id.labelTipoCozinha)
-        label_avaliacao = findViewById(R.id.labelAvaliacao)
-        label_servicos = findViewById(R.id.labelServicos)
-        editTextCidade = findViewById(R.id.cidade)
-        editTextEstado = findViewById(R.id.estado)
-        btnCadastro = findViewById(R.id.buttonCadastro)
-
+        // Inicialize os campos
+        inicializarCampos()
 
         // Campos adicionais Alimentação
         tipoCozinha.visibility = View.GONE
         avaliacao.visibility = View.GONE
         label_tipoCozinha.visibility = View.GONE
         label_avaliacao.visibility = View.GONE
+
+        // Verifique se é edição
+        val destinoId = intent.getStringExtra("destinoId")
+        if (destinoId != null) {
+            // Modo edição
+            preencherCamposParaEdicao(destinoId)
+            btnCadastro.text = "Atualizar"
+        } else {
+            // Modo cadastro
+            btnCadastro.text = "Cadastrar"
+        }
 
         // Campos adicionais Hoteis
         servicos.visibility = View.GONE
@@ -81,8 +77,31 @@ class CadastroDestinoActivity : AppCompatActivity() {
 
         // Configura o botão para salvar o destino no Firestore
         btnCadastro.setOnClickListener {
-            cadastrarDestino()
+            if (destinoId != null) {
+                atualizarDestino(destinoId) // Atualizar no Firestore
+            } else {
+                cadastrarDestino() // Cadastrar um novo destino
+            }
         }
+    }
+
+    private fun inicializarCampos(){
+        // Conectando os elementos XML aos elementos da atividade
+        nomeDestino = findViewById(R.id.nomeDestino)
+        categoria = findViewById(R.id.Categoria)
+        localizacao = findViewById(R.id.Localizacao)
+        horario = findViewById(R.id.horario)
+        custo = findViewById(R.id.custo)
+        contato = findViewById(R.id.contato)
+        tipoCozinha = findViewById(R.id.tipoCozinha)
+        avaliacao = findViewById(R.id.avaliacao)
+        servicos = findViewById(R.id.servicos)
+        label_tipoCozinha = findViewById(R.id.labelTipoCozinha)
+        label_avaliacao = findViewById(R.id.labelAvaliacao)
+        label_servicos = findViewById(R.id.labelServicos)
+        editTextCidade = findViewById(R.id.cidade)
+        editTextEstado = findViewById(R.id.estado)
+        btnCadastro = findViewById(R.id.buttonCadastro)
     }
 
     private fun atualizarCamposVisibilidade(categoria: String){
@@ -181,6 +200,69 @@ class CadastroDestinoActivity : AppCompatActivity() {
             }
             .addOnFailureListener { e ->
                 Toast.makeText(this, "Erro ao cadastrar destino: ${e.message}", Toast.LENGTH_SHORT).show()
+            }
+    }
+
+    private fun preencherCamposParaEdicao(destinoId: String) {
+        db.collection("destinos").document(destinoId).get()
+            .addOnSuccessListener { document ->
+                if (document != null) {
+                    nomeDestino.setText(document.getString("nome") ?: "")
+                    localizacao.setText(document.getString("localizacao") ?: "")
+                    horario.setText(document.getString("horario") ?: "")
+                    custo.setText(document.getString("custo") ?: "")
+                    contato.setText(document.getString("contato") ?: "")
+                    editTextCidade.setText(document.getString("cidade") ?: "")
+                    editTextEstado.setText(document.getString("estado") ?: "")
+                    servicos.setText(document.getString("servicos") ?: "")
+
+                    val categoriaIndex = resources.getStringArray(R.array.categoria)
+                        .indexOf(document.getString("categoria"))
+                    if (categoriaIndex >= 0) categoria.setSelection(categoriaIndex)
+
+                    val tipoCozinhaIndex = resources.getStringArray(R.array.tipo_de_cozinha)
+                        .indexOf(document.getString("tipoCozinha"))
+                    if (tipoCozinhaIndex >= 0) tipoCozinha.setSelection(tipoCozinhaIndex)
+
+                    val avaliacaoIndex = resources.getStringArray(R.array.avaliacao)
+                        .indexOf(document.getString("avaliacao"))
+                    if (avaliacaoIndex >= 0) avaliacao.setSelection(avaliacaoIndex)
+                }
+            }
+            .addOnFailureListener { e ->
+                Toast.makeText(this, "Erro ao carregar destino: ${e.message}", Toast.LENGTH_SHORT).show()
+            }
+    }
+
+    private fun atualizarDestino(destinoId: String) {
+        val destinoAtualizado = mutableMapOf<String, Any>(
+            "nome" to nomeDestino.text.toString(),
+            "localizacao" to localizacao.text.toString(),
+            "horario" to horario.text.toString(),
+            "custo" to custo.text.toString(),
+            "contato" to contato.text.toString(),
+            "categoria" to categoria.selectedItem.toString(),
+            "cidade" to editTextCidade.text.toString(),
+            "estado" to editTextEstado.text.toString()
+        )
+
+        // Adiciona campos adicionais apenas se forem necessários
+        if (categoria.selectedItem.toString() == "Alimentação") {
+            destinoAtualizado["tipoCozinha"] = tipoCozinha.selectedItem.toString()
+            destinoAtualizado["avaliacao"] = avaliacao.selectedItem.toString()
+        } else if (categoria.selectedItem.toString() == "Hotéis") {
+            destinoAtualizado["servicos"] = servicos.text.toString()
+            destinoAtualizado["avaliacao"] = avaliacao.selectedItem.toString()
+        }
+
+        db.collection("destinos").document(destinoId)
+            .update(destinoAtualizado)
+            .addOnSuccessListener {
+                Toast.makeText(this, "Destino atualizado com sucesso!", Toast.LENGTH_SHORT).show()
+                finish()
+            }
+            .addOnFailureListener { e ->
+                Toast.makeText(this, "Erro ao atualizar destino: ${e.message}", Toast.LENGTH_SHORT).show()
             }
     }
 
